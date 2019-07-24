@@ -1,0 +1,23 @@
+name: Mariculture
+main: me.zhehe.MC.MariculturePlugin
+version: 0.1
+api-version: 1.13
+commands:
+  mariculture:
+    aliases: [macu]
+    description: Mariculture basic command
+    usage: /<command> [temp]
+permissions:
+  mariculture.*:
+    description: Gives access to the /macu *
+    children:
+      mariculture.command: true
+  mariculture.command:
+    default: true
+    description: gives acced to the /macu command
+  mariculture.deco:
+    default: op
+    description: gives acced to the /macu deco command
+  mariculture.debug:
+    default: op
+    description: gives acced to the /macu debug command
