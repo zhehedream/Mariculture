@@ -50,7 +50,7 @@ public class MariculturePlugin extends JavaPlugin {
         chunkGenerator = new FjordChunkGenerator(this);
         schedulerManager = new SchedulerManager(this, random);
         recipeManager.registerTools();
-        WorldManager.createWorld(chunkGenerator, random);
+        if(Config.instance.worldEnable) WorldManager.createWorld(chunkGenerator, random);
         
         schedulerManager.startTask();
         

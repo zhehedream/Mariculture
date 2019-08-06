@@ -22,7 +22,7 @@ import org.bukkit.inventory.meta.ItemMeta;
  * @author Zhehe
  */
 public class WorldManager {
-    public static World fishWorld;
+    public static World fishWorld = null;
     public static void createWorld(ChunkGenerator generator, Random random) {
         WorldCreator wc = new WorldCreator(Constant.FISH_WORLD);
         wc.generator(generator);

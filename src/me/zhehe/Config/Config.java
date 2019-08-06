@@ -55,6 +55,12 @@ public class Config {
     public int GoldRodMaxUseTime;
     public int DiamondRodMaxUseTime;
     
+    public boolean worldEnable = true;
+    
+    private class WorldConfig {
+        public boolean worldEnable = true;
+    }
+    
     private Config() {
         
     }
@@ -65,6 +71,38 @@ public class Config {
         if(!directory.exists()) {
             directory.mkdir();
         }
+        
+        File world = new File(PATH + "World.json");
+        boolean create_world_json = true;
+        WorldConfig wc = new WorldConfig();
+        if(world.exists()) {
+            try(BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(PATH + "World.json"), "UTF8"))) {
+                StringBuilder sb = new StringBuilder();
+                String line = reader.readLine();
+                while (line != null) {
+                    sb.append(line);
+                    line = reader.readLine();
+                }
+
+                //Bukkit.getLogger().log(Level.INFO, sb.toString());
+                wc = (new Gson()).fromJson(sb.toString(), WorldConfig.class);
+                worldEnable = wc.worldEnable;
+                create_world_json = false;
+            } catch(IOException ex) {
+                create_world_json = true;
+            }
+        }
+        if(create_world_json) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            String json = gson.toJson(wc);
+            try(OutputStreamWriter oStreamWriter = new OutputStreamWriter(new FileOutputStream(PATH + "World.json"), "utf-8")) {
+                oStreamWriter.append(json);
+                oStreamWriter.close();
+            } catch (IOException ex) {
+                
+            }
+        }
+        
         File file = new File(PATH + "FishConfig.json");
         boolean need_initialize = true;
         DefaultConfig dc = generateDefaultConfig();
@@ -77,7 +115,7 @@ public class Config {
                     line = reader.readLine();
                 }
 
-                Bukkit.getLogger().log(Level.INFO, sb.toString());
+                //Bukkit.getLogger().log(Level.INFO, sb.toString());
                 dc = (new Gson()).fromJson(sb.toString(), DefaultConfig.class);
             } catch(IOException ex) {
                 need_initialize = true;

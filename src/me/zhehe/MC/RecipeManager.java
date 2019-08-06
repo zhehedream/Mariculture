@@ -104,7 +104,7 @@ public class RecipeManager {
             pingfan.gender = false;
             ShapelessRecipe recipe = new ShapelessRecipe( new NamespacedKey(plugin, "mpingfan_fish"), ItemManager.fishToItem(pingfan));
             recipe.addIngredient(Material.TROPICAL_FISH_BUCKET);
-            recipe.addIngredient(Material.IRON_INGOT);
+            recipe.addIngredient(Material.IRON_BLOCK);
             recipe.addIngredient(Material.EXPERIENCE_BOTTLE);
             getServer().addRecipe(recipe);
         }
