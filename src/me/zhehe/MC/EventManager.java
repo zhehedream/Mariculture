@@ -143,7 +143,9 @@ public class EventManager implements Listener {
                 inv.removeItem(seed);
                 inv.addItem(fish[random.nextInt(fish.length)]);
             }
-            db.addLocation(world, x, y, z);
+            Bukkit.getServer().getScheduler().runTaskAsynchronously(plugin, () -> {
+                db.addLocation(world, x, y, z);
+            });
         }
     }
 
@@ -166,7 +168,9 @@ public class EventManager implements Listener {
                 || block.getRelative(BlockFace.NORTH).getType() == Material.WATER) {
             Location location = event.getBlock().getLocation();
             String world = event.getBlock().getWorld().getName();
-            db.addLocation(world, block.getX(), block.getY(), block.getZ());
+            Bukkit.getServer().getScheduler().runTaskAsynchronously(plugin, () -> {
+                db.addLocation(world, block.getX(), block.getY(), block.getZ());
+            });
             event.getPlayer().sendMessage(Constant.FISH_CATCHER_PLACE);
         } else {
             event.getPlayer().sendMessage(Constant.FISH_CATCHER_FAIL);
@@ -192,7 +196,9 @@ public class EventManager implements Listener {
 
             event.getBlock().setType(Material.WATER);
             event.getBlock().getLocation().getWorld().dropItemNaturally(event.getBlock().getLocation(), is);
-            db.deleteLocation(block.getWorld().getName(), block.getX(), block.getY(), block.getZ());
+            Bukkit.getServer().getScheduler().runTaskAsynchronously(plugin, () -> {
+                db.deleteLocation(block.getWorld().getName(), block.getX(), block.getY(), block.getZ());
+            });
         }
     }
     
@@ -208,6 +214,7 @@ public class EventManager implements Listener {
     @EventHandler
     public void onBreadEat(PlayerItemConsumeEvent e) {
         if(WorldManager.fishWorld == null) return;
+        if(Config.instance.worldEnable == false) return;
         World world;
         if((world = Bukkit.getServer().getWorld("world")) == null) return;
         ItemStack is = e.getItem();
