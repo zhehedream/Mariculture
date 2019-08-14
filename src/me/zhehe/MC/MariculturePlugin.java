@@ -77,17 +77,17 @@ public class MariculturePlugin extends JavaPlugin {
             if(args.length > 0) {
                 if(args[0].equals("temp")) {
                     if (!player.hasPermission("mariculture.command")) {
-                        player.sendMessage("您无权使用该命令");
+                        player.sendMessage("Permission needed");
                         return true;
                     }
                     double temp = player.getWorld().getBlockAt(player.getLocation()).getTemperature();
-                    player.sendMessage("当前位置温度：" + Double.toString(temp));
+                    player.sendMessage("Temperature：" + Double.toString(temp));
                     Set<Integer> set = new HashSet<>();
                     for(int i = 0; i < Constant.TEMPERATURE_LIST.length; i++) {
                         if(Math.abs(Constant.TEMPERATURE_LIST[i] - temp) <= 0.5) set.add(i);
                     }
                     StringBuilder sb = new StringBuilder();
-                    sb.append("该地区适合饲养的鱼属性： ");
+                    sb.append("Suitable fish properity： ");
                     for(int sub : set) {
                         if(sub > 0) sb.append('+');
                         sb.append(sub);
@@ -97,7 +97,7 @@ public class MariculturePlugin extends JavaPlugin {
                     player.sendMessage(sb.toString());
                 } else if(args[0].equals("deco")) {
                     if (!player.hasPermission("mariculture.deco")) {
-                        player.sendMessage("您无权使用该命令");
+                        player.sendMessage("Permission needed");
                         return true;
                     }
                     Inventory inv = player.getInventory();
@@ -107,7 +107,7 @@ public class MariculturePlugin extends JavaPlugin {
                     //player.getWorld().dropItemNaturally(player.getLocation(), HeadManager.getRandomDrop(random));
                 } else if(args[0].equals("debug")) {
                     if (!player.hasPermission("mariculture.debug")) {
-                        player.sendMessage("您无权使用该命令");
+                        player.sendMessage("Permission needed");
                         return true;
                     }
                     Fish fish = new Fish();

@@ -8,6 +8,7 @@ package me.zhehe.MC;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import me.zhehe.Config.Config;
 import me.zhehe.Util.Constant;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -36,9 +37,9 @@ public class WorldManager {
         ItemStack is = new ItemStack(Material.BREAD, 1);
         ItemMeta im = is.getItemMeta();
         List<String> lores = new ArrayList<>();
-        lores.add(Constant.FISH_BREAD_TAG);
+        lores.add(Config.instance.FISH_BREAD_TAG);
         im.setLore(lores);
-        im.setDisplayName(Constant.FISH_BREAD);
+        im.setDisplayName(Config.instance.FISH_BREAD);
         is.setItemMeta(im);
         return is;
     }
@@ -47,6 +48,6 @@ public class WorldManager {
         if(is.getType() != Material.BREAD) return false;
         List<String> lores = is.getItemMeta().getLore();
         if(lores == null || lores.isEmpty()) return false;
-        return lores.get(0).equals(Constant.FISH_BREAD_TAG);
+        return lores.get(0).equals(Config.instance.FISH_BREAD_TAG);
     }
 }

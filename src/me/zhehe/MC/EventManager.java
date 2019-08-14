@@ -158,7 +158,7 @@ public class EventManager implements Listener {
         ItemStack item = event.getItemInHand();
         List<String> lores = item.getItemMeta().getLore();
         if(lores == null || lores.isEmpty()) return;
-        if(!lores.get(0).equals(Constant.FISH_CATCHER)) return;
+        if(!lores.get(0).equals(Config.instance.FISH_CATCHER)) return;
         Block block = event.getBlock();
         if(block.getRelative(BlockFace.UP).getType() == Material.WATER
                 || block.getRelative(BlockFace.DOWN).getType() == Material.WATER
@@ -171,9 +171,9 @@ public class EventManager implements Listener {
             Bukkit.getServer().getScheduler().runTaskAsynchronously(plugin, () -> {
                 db.addLocation(world, block.getX(), block.getY(), block.getZ());
             });
-            event.getPlayer().sendMessage(Constant.FISH_CATCHER_PLACE);
+            event.getPlayer().sendMessage(Config.instance.FISH_CATCHER_PLACE);
         } else {
-            event.getPlayer().sendMessage(Constant.FISH_CATCHER_FAIL);
+            event.getPlayer().sendMessage(Config.instance.FISH_CATCHER_FAIL);
         }
     }
     
@@ -188,9 +188,9 @@ public class EventManager implements Listener {
 
             ItemStack is = new ItemStack(Material.CHEST, 1);
             ItemMeta im = is.getItemMeta();
-            im.setDisplayName(Constant.FISH_CATCHER);
+            im.setDisplayName(Config.instance.FISH_CATCHER);
             List<String> lores = new ArrayList<>();
-            lores.add(Constant.FISH_CATCHER);
+            lores.add(Config.instance.FISH_CATCHER);
             im.setLore(lores);
             is.setItemMeta(im);
 

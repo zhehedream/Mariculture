@@ -164,9 +164,9 @@ public class RecipeManager {
         {
             ItemStack is = new ItemStack(Material.CHEST, 1);
             ItemMeta im = is.getItemMeta();
-            im.setDisplayName(Constant.FISH_CATCHER);
+            im.setDisplayName(Config.instance.FISH_CATCHER);
             List<String> lores = new ArrayList<>();
-            lores.add(Constant.FISH_CATCHER);
+            lores.add(Config.instance.FISH_CATCHER);
             im.setLore(lores);
             is.setItemMeta(im);
             

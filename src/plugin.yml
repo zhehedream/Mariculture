@@ -1,8 +1,6 @@
 name: Mariculture
 main: me.zhehe.MC.MariculturePlugin
-version: 0.2
-load: STARTUP
-loadbefore: [Multiverse-Core, dimension-door, multiworld]
+version: 0.1
 api-version: 1.14
 commands:
   mariculture:

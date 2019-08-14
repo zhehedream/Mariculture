@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 import java.util.logging.Level;
+import me.zhehe.Config.Config;
 import me.zhehe.Util.Constant;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -138,7 +139,7 @@ public final class HeadManager {
     public ItemStack createHead(final String uuid, final String textures) {
         ItemStack head = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta headMeta = (SkullMeta) head.getItemMeta();
-        headMeta.setDisplayName(Constant.FISH_DECO);
+        headMeta.setDisplayName(Config.instance.FISH_DECO);
         GameProfile profile = new GameProfile(UUID.fromString(uuid), null);
         profile.getProperties().put("textures", new Property("textures", textures));
         Field profileField;
@@ -163,9 +164,9 @@ public final class HeadManager {
         ItemStack is = new ItemStack(Material.COOKIE, 1);
         ItemMeta im = is.getItemMeta();
         List<String> lores = new ArrayList<>();
-        lores.add(Constant.FISH_COOKIE_TAG);
+        lores.add(Config.instance.FISH_COOKIE_TAG);
         im.setLore(lores);
-        im.setDisplayName(Constant.FISH_COOKIE);
+        im.setDisplayName(Config.instance.FISH_COOKIE);
         is.setItemMeta(im);
         return is;
     }
@@ -174,7 +175,7 @@ public final class HeadManager {
         if(is.getType() != Material.COOKIE) return false;
         List<String> lores = is.getItemMeta().getLore();
         if(lores == null || lores.isEmpty()) return false;
-        return lores.get(0).equals(Constant.FISH_COOKIE_TAG);
+        return lores.get(0).equals(Config.instance.FISH_COOKIE_TAG);
     }
     
     public static void applySpecialEffect(Player player) {

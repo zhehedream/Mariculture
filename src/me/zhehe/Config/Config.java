@@ -16,44 +16,74 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
+import me.zhehe.FishR.Type;
 import me.zhehe.FishR.Type.FishType;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 
-/**
- *
- * @author zhiqiang.hao
- */
 public class Config {
     public static Config instance = new Config();
-    public String Rod_Iron;
-    public String RodIronTag;
-    public String RodIronDescription;
-    public String Rod_Gold;
-    public String RodGoldTag;
-    public String RodGoldDescription;
-    public String Rod_Diamond;
-    public String RodDiamondTag;
-    public String RodDiamondDescription;
-    public String UnknownErrorMessage;
-    public String NoWaterErrorMessage;
-    public String NoFishErrorMessage;
-    public String GenderErrorMessage;
-    public String TooDarkErrorMessage;
-    public String TooLightErrorMessage;
-    public String NotSweetWaterErrorMessage;
-    public String NotSaltWaterErrorMessage;
-    public String OxygenErrorMessage;
-    public String TemperatureErrorMessage;
+    public String Rod_Iron = "";
+    public String RodIronTag = "";
+    public String RodIronDescription = "";
+    public String Rod_Gold = "";
+    public String RodGoldTag = "";
+    public String RodGoldDescription = "";
+    public String Rod_Diamond = "";
+    public String RodDiamondTag = "";
+    public String RodDiamondDescription = "";
+    public String UnknownErrorMessage = "";
+    public String NoWaterErrorMessage = "";
+    public String NoFishErrorMessage = "";
+    public String GenderErrorMessage = "";
+    public String TooDarkErrorMessage = "";
+    public String TooLightErrorMessage = "";
+    public String NotSweetWaterErrorMessage = "";
+    public String NotSaltWaterErrorMessage = "";
+    public String OxygenErrorMessage = "";
+    public String TemperatureErrorMessage = "";
     public Map<ItemStack,Double> itemProductionRate = new HashMap<>();
     public Map<FishType, ItemStack> fishProductionDict = new HashMap<>();
     public int baseRate = 35;
-    public int IronRodMaxUseTime;
-    public int GoldRodMaxUseTime;
-    public int DiamondRodMaxUseTime;
+    public int IronRodMaxUseTime = 0;
+    public int GoldRodMaxUseTime = 0;
+    public int DiamondRodMaxUseTime = 0;
+    
+    public String BookName = "", 
+            Book1 = "", BookUrl1 = "", Book2 = "", BookUrl2 = "", 
+            Book3 = "", BookUrl3 = "", Book4 = "", BookUrl4 = "", 
+            Book5 = "", BookUrl5 = "", Book6 = "", BookUrl6 = "";
+    
+    public String FISH_DECO = "";
+    public String FISH_COOKIE = "";
+    public String FISH_COOKIE_TAG = "";
+
+    public String FISH_BREAD = "";
+    public String FISH_BREAD_TAG = "";
+    
+    public String LIFE = "";
+    public String PRO = "";
+    public String TEMP_ADAP = "";
+    public String OXYGEN_ADAP = "";
+    public String WATER_TYPE = "";
+    public String WATER_SALT = "";
+    public String WATER_SWEET = "";
+    public String FISH_SPECIAL = "";
+    public String GENDER = "";
+    public String MALE = "";
+    public String FEMALE = "";
+    public String DARK = "";
+    public String MUL_TYPE = "";
+    
+    public String FISH_CATCHER = "";
+    public String FISH_CATCHER_PLACE = "";
+    public String FISH_CATCHER_FAIL = "";
+    
+    public Map<Type.FishSpecial, String> FISHSPECIAL_DICT = new HashMap<>();
+    public Map<Integer, String> LIFE_DICT = new HashMap<>();
+    public Map<FishType, String> FISHTYPE_DICT = new HashMap<>();
+
     
     public boolean worldEnable = true;
     
@@ -164,30 +194,113 @@ public class Config {
         this.IronRodMaxUseTime = dc.IronRodMaxUseTime;
         this.GoldRodMaxUseTime = dc.GoldRodMaxUseTime;
         this.DiamondRodMaxUseTime = dc.DiamondRodMaxUseTime;
+        
+        this.BookName = dc.BookName;
+        this.Book1 = dc.Book1;
+        this.BookUrl1 = dc.BookUrl1;
+        this.Book2 = dc.Book2;
+        this.BookUrl2 = dc.BookUrl2;
+        this.Book3 = dc.Book3;
+        this.BookUrl3 = dc.BookUrl3;
+        this.Book4 = dc.Book4;
+        this.BookUrl4 = dc.BookUrl4;
+        this.Book5 = dc.Book5;
+        this.BookUrl5 = dc.BookUrl5;
+        this.Book6 = dc.Book6;
+        this.BookUrl6 = dc.BookUrl6;
+        
+        this.FISH_DECO = dc.FISH_DECO;
+        this.FISH_COOKIE = dc.FISH_COOKIE;
+        this.FISH_COOKIE_TAG = dc.FISH_COOKIE_TAG;
+
+        this.FISH_BREAD = dc.FISH_BREAD;
+        this.FISH_BREAD_TAG = dc.FISH_BREAD_TAG;
+        
+        this.LIFE = dc.LIFE;
+        this.PRO = dc.PRO;
+        this.TEMP_ADAP = dc.TEMP_ADAP;
+        this.OXYGEN_ADAP = dc.OXYGEN_ADAP;
+        this.WATER_TYPE = dc.WATER_TYPE;
+        this.WATER_SALT = dc.WATER_SALT;
+        this.WATER_SWEET = dc.WATER_SWEET;
+        this.FISH_SPECIAL = dc.FISH_SPECIAL;
+        this.GENDER = dc.GENDER;
+        this.MALE = dc.MALE;
+        this.FEMALE = dc.FEMALE;
+        this.DARK = dc.DARK;
+        this.MUL_TYPE = dc.MUL_TYPE;
+        
+        this.FISH_CATCHER = dc.FISH_CATCHER;
+        this.FISH_CATCHER_PLACE = dc.FISH_CATCHER_PLACE;
+        this.FISH_CATCHER_FAIL = dc.FISH_CATCHER_FAIL;
+        
+        this.FISHSPECIAL_DICT.putAll(dc.FISHSPECIAL_DICT);
+        this.LIFE_DICT.putAll(dc.LIFE_DICT);
+        this.FISHTYPE_DICT.putAll(dc.FISHTYPE_DICT);
     }
     
     static class DefaultConfig {
-        public String Rod_Iron = "铁钩竿";
+        public String Rod_Iron = "Iron Rod";
         public String RodIronTag = "RodIron";
-        public String Rod_Gold = "金钩竿";
+        public String Rod_Gold = "Golden Rod";
         public String RodGoldTag = "RodGold";
-        public String Rod_Diamond = "钻石钩竿";
+        public String Rod_Diamond = "Diamond Rod";
         public String RodDiamondTag = "RodDiamond";
         
-        public String RodIronDescription = "§f这个钓竿散发着神奇的魔力，似乎可以召唤什么...";
-        public String RodGoldDescription = "§f这个钓竿散发着神奇的魔力，似乎可以召唤什么...";
-        public String RodDiamondDescription = "§f这个钓竿散发着神奇的魔力，似乎可以召唤什么...";
+        public String BookName = "The Guide of Mariculture";
+        public String Book1 = "1. Water Tank";
+        public String BookUrl1 = "https://github.com/zhehedream/MaricultureGuide/blob/master/Page1.md";
+        public String Book2 = "2. Recipes";
+        public String BookUrl2 = "https://github.com/zhehedream/MaricultureGuide/blob/master/Page2.md";
+        public String Book3 = "3. Fish Farming Tutorial";
+        public String BookUrl3 = "https://github.com/zhehedream/MaricultureGuide/blob/master/Page3.md";
+        public String Book4 = "4. Fish Illustration";
+        public String BookUrl4 = "https://github.com/zhehedream/MaricultureGuide/blob/master/Page4.md";
+        public String Book5 = "5. Fish Breeding  Handbook";
+        public String BookUrl5 = "https://github.com/zhehedream/MaricultureGuide/blob/master/Page5.md";
+        public String Book6 = "6. Effect Dictionary";
+        public String BookUrl6 = "https://github.com/zhehedream/MaricultureGuide/blob/master/Page6.md";
         
-        public String UnknownErrorMessage = "发生未知错误";
-        public String NoWaterErrorMessage = "找不到水面。养鱼需要3x3的水面";
-        public String NoFishErrorMessage = "请在箱子的前两格分别放入需要培养的两种鱼";
-        public String GenderErrorMessage = "两种鱼的性别需不相同";
-        public String TooDarkErrorMessage = "该个体无法适应非露天环境";
-        public String TooLightErrorMessage = "该个体无法适应露天环境";
-        public String NotSweetWaterErrorMessage = "该个体无法适应咸水环境";
-        public String NotSaltWaterErrorMessage = "该个体无法适应淡水环境";
-        public String OxygenErrorMessage = "氧气浓度错误，请尝试增加／移除水草";
-        public String TemperatureErrorMessage = "温度错误，您可以使用/macu temp查看当前位置温度   请尝试将鱼塘迁移至其他生态群系";
+        public String FISH_DECO = "Decoration Block";
+        public String FISH_COOKIE = "Lucky Sea Rhyme Cookie";
+        public String FISH_COOKIE_TAG = "LuckyCookie";
+
+        public String FISH_BREAD = "Quantum Cod Sandwich";
+        public String FISH_BREAD_TAG = "DimensionBread";
+        
+        public String LIFE = "Lifespan";
+        public String PRO = "Speed";
+        public String TEMP_ADAP = "Temperature Tolerance";
+        public String OXYGEN_ADAP = "Oxygen Tolerance";
+        public String WATER_TYPE = "Aquatic Tolerance";
+        public String WATER_SALT = "SALT";
+        public String WATER_SWEET = "SWEET";
+        public String FISH_SPECIAL = "Effect";
+        public String GENDER = "Type";
+        public String MALE = "Male";
+        public String FEMALE = "Female";
+        public String DARK = "Cave";
+        public String MUL_TYPE = "Hybrid";
+        
+        public String FISH_CATCHER = "Automatic Fish Catcher";
+        public String FISH_CATCHER_PLACE = "A Fish Catcher is created";
+        public String FISH_CATCHER_FAIL = "Water is needed for Fish Catcher to work";
+        
+        
+        public String RodIronDescription = "§This fishing rod exudes magical power and seems to be able to summon something...";
+        public String RodGoldDescription = "§fThis fishing rod exudes magical power and seems to be able to summon something...";
+        public String RodDiamondDescription = "§fThis fishing rod exudes magical power and seems to be able to summon something...";
+        
+        public String UnknownErrorMessage = "Unknown Error happened...";
+        public String NoWaterErrorMessage = "Cannot find surface water. A 3x3 water is needed";
+        public String NoFishErrorMessage = "Please put 2 fish into the first 2 cells of chest";
+        public String GenderErrorMessage = "The gender should be different";
+        public String TooDarkErrorMessage = "This fish cannot adapt to the open environment";
+        public String TooLightErrorMessage = "This fish cannot adapt to the non-open environment";
+        public String NotSweetWaterErrorMessage = "This fish cannot adapt to the salt water environment";
+        public String NotSaltWaterErrorMessage = "This fish cannot adapt to the sweet water environment";
+        public String OxygenErrorMessage = "Wrong Oxygen concentration, please try to increase/remove seagrass";
+        public String TemperatureErrorMessage = "Wrong Temperature. Please use `/macu temp` to see the temperature. Please try in different biomes";
         
         public int IronRodMaxUseTime = 10;
         public int GoldRodMaxUseTime = 15;
@@ -196,6 +309,10 @@ public class Config {
         
         public Map<Map<String, Object>, Double> itemProductionRate = new HashMap<>();
         public Map<FishType, Map<String, Object>> fishProductionDict = new HashMap<>();
+        
+        public Map<Type.FishSpecial, String> FISHSPECIAL_DICT;
+        public Map<Integer, String> LIFE_DICT;
+        public Map<FishType, String> FISHTYPE_DICT;
     }
     private static DefaultConfig generateDefaultConfig() {
         DefaultConfig dc = new DefaultConfig();
@@ -241,6 +358,61 @@ public class Config {
             dc.fishProductionDict.put(FishType.ZUANSHI, (new ItemStack(Material.DIAMOND, 1)).serialize());
             
             dc.fishProductionDict.put(FishType.HAIREN, (new ItemStack(Material.TRIDENT, 1)).serialize());
+            
+            dc.FISHSPECIAL_DICT = new HashMap<>();
+            dc.FISHSPECIAL_DICT.put(Type.FishSpecial.NONE, "Normal");
+            dc.FISHSPECIAL_DICT.put(Type.FishSpecial.YANHUOWANHUI, "Fireworks");
+            dc.FISHSPECIAL_DICT.put(Type.FishSpecial.YUANDING, "Gardener");
+            dc.FISHSPECIAL_DICT.put(Type.FishSpecial.HULI, "Nursing");
+            dc.FISHSPECIAL_DICT.put(Type.FishSpecial.XIDAPUBEN, "Beatific");
+            dc.FISHSPECIAL_DICT.put(Type.FishSpecial.GUOJIABAOZANG, "National Treasure");
+            dc.FISHSPECIAL_DICT.put(Type.FishSpecial.SHIDAI, "Aging");
+            dc.FISHSPECIAL_DICT.put(Type.FishSpecial.DABAOJIAO, "Great Barrier Reef");
+
+            //15 18 20 25 30 32 35
+            dc.LIFE_DICT = new HashMap<>();
+            dc.LIFE_DICT.put(0, "Shortest");
+            dc.LIFE_DICT.put(1, "Shorter");
+            dc.LIFE_DICT.put(2, "Shortened");
+            dc.LIFE_DICT.put(3, "Normal");
+            dc.LIFE_DICT.put(4, "Elongated");
+            dc.LIFE_DICT.put(5, "Longer");
+            dc.LIFE_DICT.put(6, "Longest");
+
+            dc.FISHTYPE_DICT = new HashMap<>();
+            dc.FISHTYPE_DICT.put(FishType.PINGFAN, "Ordinary");
+            dc.FISHTYPE_DICT.put(FishType.PUSU, "Simple");
+            dc.FISHTYPE_DICT.put(FishType.PUSHI, "Plain");
+            dc.FISHTYPE_DICT.put(FishType.CHONGLANG, "Surf");
+            dc.FISHTYPE_DICT.put(FishType.QIANSHUI, "Diving");
+            dc.FISHTYPE_DICT.put(FishType.TOUTIE, "Tough");
+            dc.FISHTYPE_DICT.put(FishType.TIAOYUE, "Jump");
+            dc.FISHTYPE_DICT.put(FishType.JILIU, "Rapid");
+            dc.FISHTYPE_DICT.put(FishType.JIYOU, "Adventure");
+            dc.FISHTYPE_DICT.put(FishType.NILIU, "Counter");
+            dc.FISHTYPE_DICT.put(FishType.JIANYUE, "Splash");
+            dc.FISHTYPE_DICT.put(FishType.YUANGU, "Ancient");
+            dc.FISHTYPE_DICT.put(FishType.DITU, "Map");
+            dc.FISHTYPE_DICT.put(FishType.SHIZU, "Ancestor");
+            dc.FISHTYPE_DICT.put(FishType.CHENCHUAN, "Shipwreck");
+            dc.FISHTYPE_DICT.put(FishType.BAOZANG, "Treasure");
+            dc.FISHTYPE_DICT.put(FishType.HUASHI, "Fossil");
+            dc.FISHTYPE_DICT.put(FishType.HAIREN, "Primadonna");
+            dc.FISHTYPE_DICT.put(FishType.DENGLONG, "Lantern");
+            dc.FISHTYPE_DICT.put(FishType.HUAYANG, "Undine");
+            dc.FISHTYPE_DICT.put(FishType.MEILI, "Beauty");
+            dc.FISHTYPE_DICT.put(FishType.ZHUANGJIA, "Armor");
+            dc.FISHTYPE_DICT.put(FishType.HEJIN, "Alloy");
+            dc.FISHTYPE_DICT.put(FishType.DONGHAI, "Pacific");
+            dc.FISHTYPE_DICT.put(FishType.SANSHA, "Atlantic");
+            dc.FISHTYPE_DICT.put(FishType.BAODAO, "Arctic");
+            dc.FISHTYPE_DICT.put(FishType.BOHAI, "Antarctica");
+            dc.FISHTYPE_DICT.put(FishType.WEIZHI, "Unknown");
+            dc.FISHTYPE_DICT.put(FishType.YOULING, "Ghost");
+            dc.FISHTYPE_DICT.put(FishType.SHENMI, "Mysterious");
+            dc.FISHTYPE_DICT.put(FishType.ZHENZHU, "Pearl");
+            dc.FISHTYPE_DICT.put(FishType.ZUANSHI, "Diamond");
+
         }
         return dc;
     }

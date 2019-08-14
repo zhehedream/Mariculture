@@ -7,6 +7,7 @@ package me.zhehe.FishR;
 
 import java.util.ArrayList;
 import java.util.List;
+import me.zhehe.Config.Config;
 import me.zhehe.Util.Constant;
 import me.zhehe.FishR.Type.FishSpecial;
 import me.zhehe.FishR.Type.FishType;
@@ -106,38 +107,38 @@ public class Fish {
         
         sb.append(Constant.LORE_COLOR);
         if(type[0] == type[1]) {
-            sb.append(Constant.FISHTYPE_DICT.get(type[0]));
+            sb.append(Config.instance.FISHTYPE_DICT.get(type[0]));
         } else {
-            sb.append(Constant.FISHTYPE_DICT.get(type[0]));
+            sb.append(Config.instance.FISHTYPE_DICT.get(type[0]));
             sb.append("-");
-            sb.append(Constant.FISHTYPE_DICT.get(type[1]));
-            sb.append(Constant.MUL_TYPE);
+            sb.append(Config.instance.FISHTYPE_DICT.get(type[1]));
+            sb.append(Config.instance.MUL_TYPE);
         }
         res.add(sb.toString());
         
         sb.setLength(0);
         sb.append(Constant.LORE_COLOR);
-        sb.append(Constant.GENDER);
+        sb.append(Config.instance.GENDER);
         sb.append(" : ");
-        if(gender) sb.append(Constant.FEMALE);
-        else sb.append(Constant.MALE);
+        if(gender) sb.append(Config.instance.FEMALE);
+        else sb.append(Config.instance.MALE);
         res.add(sb.toString());
         
         sb.setLength(0);
         sb.append(Constant.LORE_COLOR);
-        sb.append(Constant.LIFE);
+        sb.append(Config.instance.LIFE);
         sb.append(" : ");
         sb.append(Constant.RED);
-        sb.append(Constant.LIFE_DICT.get(life[0]));
+        sb.append(Config.instance.LIFE_DICT.get(life[0]));
         sb.append(Constant.WHITE);
         sb.append('/');
         sb.append(Constant.BLUE);
-        sb.append(Constant.LIFE_DICT.get(life[1]));
+        sb.append(Config.instance.LIFE_DICT.get(life[1]));
         res.add(sb.toString());
         
         sb.setLength(0);
         sb.append(Constant.LORE_COLOR);
-        sb.append(Constant.PRO);
+        sb.append(Config.instance.PRO);
         sb.append(" : ");
         sb.append(Constant.RED);
         sb.append((pro[0] & 0x7));
@@ -149,7 +150,7 @@ public class Fish {
         
         sb.setLength(0);
         sb.append(Constant.LORE_COLOR);
-        sb.append(Constant.TEMP_ADAP);
+        sb.append(Config.instance.TEMP_ADAP);
         sb.append(" : ");
         sb.append(Constant.RED);
         if(temp_adap[0] >= 0) sb.append('+');
@@ -163,7 +164,7 @@ public class Fish {
         
         sb.setLength(0);
         sb.append(Constant.LORE_COLOR);
-        sb.append(Constant.OXYGEN_ADAP);
+        sb.append(Config.instance.OXYGEN_ADAP);
         sb.append(" : ");
         sb.append(Constant.RED);
         if(oxygen_adap[0] >= 0) sb.append('+');
@@ -177,33 +178,33 @@ public class Fish {
         
         sb.setLength(0);
         sb.append(Constant.LORE_COLOR);
-        sb.append(Constant.WATER_TYPE);
+        sb.append(Config.instance.WATER_TYPE);
         sb.append(" : ");
         sb.append(Constant.RED);
-        if(water[0] == WaterType.SALT) sb.append(Constant.WATER_SALT);
-        else sb.append(Constant.WATER_SWEET);
+        if(water[0] == WaterType.SALT) sb.append(Config.instance.WATER_SALT);
+        else sb.append(Config.instance.WATER_SWEET);
         sb.append(Constant.WHITE);
         sb.append('/');
         sb.append(Constant.BLUE);
-        if(water[1] == WaterType.SALT) sb.append(Constant.WATER_SALT);
-        else sb.append(Constant.WATER_SWEET);
+        if(water[1] == WaterType.SALT) sb.append(Config.instance.WATER_SALT);
+        else sb.append(Config.instance.WATER_SWEET);
         res.add(sb.toString());
         
         sb.setLength(0);
         sb.append(Constant.LORE_COLOR);
-        sb.append(Constant.FISH_SPECIAL);
+        sb.append(Config.instance.FISH_SPECIAL);
         sb.append(" : ");
         sb.append(Constant.RED);
-        sb.append(Constant.FISHSPECIAL_DICT.get(special[0]));
+        sb.append(Config.instance.FISHSPECIAL_DICT.get(special[0]));
         sb.append(Constant.WHITE);
         sb.append('/');
         sb.append(Constant.BLUE);
-        sb.append(Constant.FISHSPECIAL_DICT.get(special[1]));
+        sb.append(Config.instance.FISHSPECIAL_DICT.get(special[1]));
         res.add(sb.toString());
         
         sb.setLength(0);
         sb.append(Constant.LORE_COLOR);
-        sb.append(Constant.DARK);
+        sb.append(Config.instance.DARK);
         sb.append(" : ");
         sb.append(Constant.RED);
         sb.append(dark[0] ? "yes" : "no");
